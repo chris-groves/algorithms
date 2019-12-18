@@ -1,6 +1,6 @@
 require 'benchmark'
 
-Benchmark.bmbm do |bm|
+Benchmark.bm do |bm|
   array = Array.new(100000) { rand(1...9) }
   bm.report('Test Last:') do
     array.last
