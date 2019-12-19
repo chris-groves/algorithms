@@ -7,7 +7,7 @@ array = Array(1..x)
 while true do
   Benchmark.bm do |bm|
     bm.report("Test Array #{x}:") do
-      array.reverse
+      array.shuffle
     end
   end
   x += 50000
