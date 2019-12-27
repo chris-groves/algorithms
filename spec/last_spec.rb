@@ -8,6 +8,4 @@ describe 'last' do
   it 'returns the last element in an array' do
     expect(last([3,2,1])).to eq 1
   end
-
-  
 end
