@@ -5,8 +5,16 @@ def last(array)
 end
 
 def timing(array)
-  time = Benchmark.measure do
+  counter = 1
+  while true do
+    time = Benchmark.measure do
       array.last
+    end
+    print counter
+    print time
+    counter += 1
+    break if counter == 101
   end
-  puts time
 end
+
+timing([1,2,3])
