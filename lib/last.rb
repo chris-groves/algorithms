@@ -1,19 +1,26 @@
 require 'benchmark'
 
-def last(array)
-  array.last
-end
+class Last
+  attr_reader :array_length, :times_array
 
-def timing(array)
-  counter = 1
-  while true do
-    time = Benchmark.measure do
-      array.last
-    end
-    print counter, time
-    counter += 1
-    break if counter == 101
+  def initialize(array_length)
+    @array_length = array_length
+    @times_array = []
+  end
+
+  def build_array
+    @array = Array(1..array_length)
+  end
+
+  def timing
+    starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    @array.last
+    ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    time = ending - starting
+    p time
   end
 end
 
-timing([1,2,3])
+timer = Last.new(5)
+timer.build_array
+timer.timing
