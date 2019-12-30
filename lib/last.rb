@@ -10,8 +10,7 @@ def timing(array)
     time = Benchmark.measure do
       array.last
     end
-    print counter
-    print time
+    print counter, time
     counter += 1
     break if counter == 101
   end
