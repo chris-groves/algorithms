@@ -1,13 +1,16 @@
 require 'benchmark'
 
 class Shuffle
-  atrr_accessor :array_length, :array, :results_array, :file
+  attr_accessor :array_length, :array, :results_array, :file, :average_time
 
   INCREASE_ARRAY_AMOUNT = 50000
 
   def initialize(array_length)
     @array_length = array_length
     @results_array = []
+    @file = ""
+    @array = []
+    @average_time = 0
   end
 
   def open_output_file
@@ -23,9 +26,7 @@ class Shuffle
   end
 
   def time_shuffle_method
-    Benchmark.realtime do
-      @array.shuffle
-    end
+    Benchmark.realtime { @array.shuffle }
   end
 
   def add_time_to_results_array
@@ -33,7 +34,7 @@ class Shuffle
   end
 
   def sort_results_array
-    @results_array.sort
+    @results_array = @results_array.sort
   end
 
   def remove_largest_5_results
@@ -44,8 +45,12 @@ class Shuffle
     @results_array.shift(5)
   end
 
+  def calculate_average_time
+    @average_time = @results_array.sum/@results_array.length
+  end
+
   def output_results_to_file
-    @file.puts "#{@x} - #{@results_array.sum/@results_array.length}"
+    @file.puts @average_time
   end
 
   def empty_results_array
@@ -56,3 +61,14 @@ class Shuffle
     @array_length += INCREASE_ARRAY_AMOUNT
   end
 end
+
+timer = Shuffle.new(50000)
+timer.build_array
+100.times { timer.add_time_to_results_array }
+timer.sort_results_array
+timer.remove_largest_5_results
+timer.remove_smallest_5_results
+timer.calculate_average_time
+timer.open_output_file
+timer.output_results_to_file
+timer.close_output_file
