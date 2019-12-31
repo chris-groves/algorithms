@@ -3,7 +3,7 @@ require 'benchmark'
 class Shuffle
   attr_accessor :array_length, :array, :results_array, :file, :average_time
 
-  INCREASE_ARRAY_AMOUNT = 50000
+  INCREASE_ARRAY_LENGTH_AMOUNT = 50000
 
   def initialize(array_length)
     @array_length = array_length
@@ -14,7 +14,7 @@ class Shuffle
   end
 
   def open_output_file
-    @file = File.open('shuffle_output.txt', 'w')
+    @file = File.open('shuffle_output.txt', 'a')
   end
 
   def close_output_file
@@ -50,25 +50,31 @@ class Shuffle
   end
 
   def output_results_to_file
-    @file.puts @average_time
+    @file.puts "#{@array_length} - #{@average_time}"
   end
 
   def empty_results_array
-    @results_array.clear
+    @results_array = @results_array.clear
   end
 
   def increase_array_length
-    @array_length += INCREASE_ARRAY_AMOUNT
+    @array_length += INCREASE_ARRAY_LENGTH_AMOUNT
   end
 end
 
 timer = Shuffle.new(50000)
-timer.build_array
-100.times { timer.add_time_to_results_array }
-timer.sort_results_array
-timer.remove_largest_5_results
-timer.remove_smallest_5_results
-timer.calculate_average_time
-timer.open_output_file
-timer.output_results_to_file
-timer.close_output_file
+
+while true do
+  timer.build_array
+  100.times { timer.add_time_to_results_array }
+  timer.sort_results_array
+  timer.remove_largest_5_results
+  timer.remove_smallest_5_results
+  timer.calculate_average_time
+  timer.open_output_file
+  timer.output_results_to_file
+  timer.close_output_file
+  timer.empty_results_array
+  timer.increase_array_length
+  break if timer.array_length == 1050000
+end
