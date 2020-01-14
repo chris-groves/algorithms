@@ -20,3 +20,25 @@ To get the best possible timings each of the four methods were timed 100 times f
 The image below shows this represented in a line graph. The vertical axis shows the time taken to run the method in seconds and the horizontal axis the length of the array used.
 
 ![](Timings.png)
+
+## Writing My Own Algorithms
+
+This step involves me writing my own algorithms for the following:
+
+- Shuffling an array
+
+- Reversing an array
+
+- Finding dupicates in a list of words
+
+- Fidning the most frequent words in a list of words
+
+- Sorting an array of 0s and 1s
+
+- Sorting an array
+
+- Fibonacci - create an array of the first x numbers in the fibonacci sequence
+
+- Create all possible pairings from a list of students
+
+- Sub-sequence sum - given an array of integers and a target number, find if there exist a sequence of numbers that sum up to the target.
