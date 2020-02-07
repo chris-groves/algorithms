@@ -44,3 +44,7 @@ This step involves me writing my own algorithms for the following:
 - Sub-sequence sum - given an array of integers and a target number, find if there exist a sequence of numbers that sum up to the target.
 
 The code can be found in the 'Own-Algorithms' folder.
+
+## Timing My Own Algorithms
+
+I am currently on this step and beginning with measuring my sort method. The challenge has been finding a way to feed an array  into the Sorter class (which contains my sort method), remembering to shuffle the array before sorting.
