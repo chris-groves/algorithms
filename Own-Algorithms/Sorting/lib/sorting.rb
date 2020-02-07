@@ -1,5 +1,5 @@
 class Sorter
-  attr_accessor :smallest_element, :array, :array_length
+  attr_accessor :smallest_element, :array, :array_length, :output_array
 
   def initialize(array)
     @array = array

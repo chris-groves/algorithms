@@ -2,14 +2,15 @@ require '../Timer/Array-Builder/lib/array_builder'
 require './lib/sorting'
 require 'benchmark'
 
+
 array = ArrayBuilder.new
 
 array.build_array
 
-sort = Sort.new(array.array.shuffle)
+array.shuffle_array
 
-results_array = []
+array = array.array
 
-results_array << Benchmark.realtime { sort.sort }
+sort = Sorter.new(array)
 
-p results_array
+Benchmark.realtime { sort.sort }

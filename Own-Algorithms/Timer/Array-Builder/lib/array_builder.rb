@@ -16,4 +16,8 @@ INCREASE_ARRAY_LENGTH_AMOUNT = 50000
   def build_array
     @array = Array(1..@array_length)
   end
+
+  def shuffle_array
+    @array = @array.shuffle
+  end
 end
