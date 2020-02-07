@@ -8,8 +8,8 @@ array.build_array
 
 sort = Sort.new(array.array.shuffle)
 
-file = File.open('sorting_output.txt', 'a')
+results_array = []
 
-file.puts Benchmark.realtime { sort.sort }
+results_array << Benchmark.realtime { sort.sort }
 
-file.close
+p results_array
