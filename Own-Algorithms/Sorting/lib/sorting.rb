@@ -1,4 +1,4 @@
-class Sort
+class Sorter
   attr_accessor :smallest_element, :array, :array_length
 
   def initialize(array)
